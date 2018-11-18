@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="row">
+        <form class="example-form">
+            <mat-form-field class="example-full-width">
+                <input matInput required placeholder="Введите название фильма" [value]="query" (keydown)="onChangeQuery($event)">
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Введите страницу" [value]="page" (keydown)="onChangePage($event)">
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <input matInput required placeholder="Введите год" [value]="year" (keydown)="onChangeYear($event)">
+            </mat-form-field>
+        </form>
+    </div>
+    <div class="row">
+        <div class="col-md-4" *ngFor="let film of films">
+            <mat-card class="example-card">
+                <mat-card-header>
+                    <mat-card-title>{{film.Title}}</mat-card-title>
+                    <mat-card-subtitle>{{film.Year}}</mat-card-subtitle>
+                </mat-card-header>
+                <div class="card-header" [style.backgroundImage]="'url('+ film.Poster +')'"></div>
+                <mat-card-actions>
+                    <button mat-button routerLink="/item/{{film.imdbID}}">Посмотреть</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>
